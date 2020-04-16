@@ -1,0 +1,30 @@
+<html>
+  <head>
+  	<title>Hall of fame</title>
+  </head>
+  <body>
+    <h1>Hall of Fame<%=name%></h1>
+
+      <% for (var i = 0; i < data.length; i++) { %>
+
+        <div><a href="/individual?id=<%=data[i]._id%>"><%=data[i].name%></a></div>
+
+      <% } %>
+
+	<hr />
+
+	<hr />
+	
+	Search:  
+	<form action="/search" method="GET">
+		<input type="text" name="search"><input type="submit" value="Find It">
+	</form>
+
+	<hr />
+	
+      <a href="/upload.html">Make Post</a>
+      
+    
+
+  </body>
+</html>
