@@ -1,0 +1,35 @@
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#upload').on('click', function(evt) {
+                var formdata = new FormData();
+                formdata.append('thefile', $("#uploadfile")[0].files[0]);
+                $.ajax({
+                    type: 'post',
+                    url: '/submit',
+                    data: formdata,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        alert(response);
+                    },
+                    error: function(err) {
+                        alert(err);
+                    }
+                });
+            });
+    });
+    </script>
+</head>
+  <body>
+    <form action="/submit" method="post" enctype="multipart/form-data">
+        name: <textarea name="name"></textarea>
+        description:<textarea name="description"></textarea>
+
+    	<input type="file" name="thefile" accept=".jpg" id="uploadfile">
+    <input type="submit" value="Post It">
+    </form>
+  </body>
+</head>
